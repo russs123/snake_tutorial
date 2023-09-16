@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://cad25ojl47q8"]
+
+[ext_resource type="FontFile" uid="uid://ctijp6avftrtc" path="res://assets/MaldiniBold.ttf" id="1_4cjqx"]
+[ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_k7vgk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hy06m"]
+bg_color = Color(0, 0.239216, 0.305882, 1)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8be6j"]
+bg_color = Color(0, 0.611765, 0.172549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l65v3"]
+bg_color = Color(0, 0.737255, 0.168627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4ktg"]
+bg_color = Color(0, 0.572549, 0.631373, 1)
+
+[node name="GameOverMenu" type="CanvasLayer"]
+script = ExtResource("1_k7vgk")
+
+[node name="GameOverPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hy06m")
+
+[node name="ResultLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -86.0
+offset_right = 133.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_4cjqx")
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 375.0
+offset_top = 545.0
+offset_right = 625.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("1_4cjqx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_8be6j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l65v3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u4ktg")
+text = "Play Again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
